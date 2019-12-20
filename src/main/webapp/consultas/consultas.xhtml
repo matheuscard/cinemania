@@ -1,0 +1,100 @@
+<ui:composition template="/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">Consultas estatísticas </ui:define>
+    <ui:define name="main">
+        <h:form class="form">
+            <h2 class="form__title">Consultas estatísticas</h2>
+            <h3> Consulta quantidade ingresso do filme por tipo:</h3>
+            <div class="form__row">
+                <h:outputLabel for="filme" value="Filme: "/>
+                <h:selectOneMenu id="filme" 
+                                 value="#{compraControle.idFilme}"
+                                 class="form__input input--width-medium"
+                                 required="true"
+                                 requiredMessage="Campo categoria: o valor é necessário.">
+                    <f:selectItem itemLabel="" noSelectionOption="true"/>
+                    <f:selectItems value="#{filmeControle.filmes}"
+                                   var="filme"
+                                   itemLabel="#{filme.nome}"
+                                   itemValue="#{filme.id}"/>
+                </h:selectOneMenu>
+            </div>
+            <div class="form__row">
+                <h:outputLabel for="tipo" value="Tipo: "/>
+                <h:selectOneMenu id="tipo" 
+                                 value="#{compraControle.idTipo}"
+                                 class="form__input input--width-medium"
+                                 required="true"
+                                 requiredMessage="Campo categoria: o valor é necessário.">
+                    <f:selectItem itemLabel="" noSelectionOption="true"/>
+                    <f:selectItems value="#{tipoControle.tipos}"
+                                   var="tipo"
+                                   itemLabel="#{tipo.descricao}"
+                                   itemValue="#{tipo.ID}"/>
+                </h:selectOneMenu>
+            </div>
+
+            <h:commandButton class="form__button" 
+                             value="Consultar"
+                             action="#{compraControle.quantidadeIngressoPorFilmeTipo(compraControle.idFilme,compraControle.idTipo)}"/>
+
+            <h:messages class="form__message"/>
+            <h:outputFormat  value="Quantidade ingressos desse filme por este tipo : {0}.">
+                <f:param value="#{compraControle.quantidadeIngressoPorTipoFilme}"/>
+            </h:outputFormat>
+            <h3> Consulta o filme que mais arrecadou: </h3>
+            <div class="form__command__bar">
+
+                <h:commandButton class="form__button" 
+                                 value="Campeão de Bilheteria"
+                                 action="#{compraControle.filmeMais()}">
+                </h:commandButton>
+            </div>
+            <h:dataTable value="#{compraControle.listaObj}"
+                         var="obj"
+                         styleClass="table"
+                         headerClass="table__header"
+                         rowClasses="table--line-odd, table--line-even"
+                         rendered="#{compraControle.mostrarTabelaAlternativa}">">
+
+                <h:column>
+                    <f:facet name="header">Filme</f:facet>
+                        #{obj[0]}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Arrecadação</f:facet>
+                        #{obj[1]}
+                </h:column>
+            </h:dataTable>
+            <h:messages class="form__message" style="margin-left: 10%;"/>
+            <h3> Consulta a sessao que menos arrecadou: (Obs.: A sessao precisa ter arrecadado por um ingresso pelo menos.)</h3>
+                        <div class="form__command__bar">
+
+                <h:commandButton class="form__button" 
+                                 value="Sessao loser"
+                                 action="#{compraControle.sessaoMenos()}">
+                </h:commandButton>
+            </div>
+            <h:dataTable value="#{compraControle.listaObj}"
+                         var="obj"
+                         styleClass="table"
+                         headerClass="table__header"
+                         rowClasses="table--line-odd, table--line-even"
+                         rendered="#{!compraControle.mostrarTabelaAlternativa}">
+
+                <h:column>
+                    <f:facet name="header">Sessao</f:facet>
+                        #{obj[0]}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Arrecadação</f:facet>
+                        #{obj[1]}
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

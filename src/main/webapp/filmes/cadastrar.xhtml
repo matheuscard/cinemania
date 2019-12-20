@@ -1,0 +1,66 @@
+<ui:composition template="/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">Cadastrar Filme - Cinemania 1.0  </ui:define>
+    <ui:define name="main">
+        <h:form class="form">
+            <h2 class="form__title">Cadastro de Filmes</h2>
+
+            <div class="form__row">
+                <h:outputLabel for="nome" value="Nome: "/>
+                <h:inputText id="nome" 
+                             value="#{filmeControle.filme.nome }"
+                             class="form__input input--width-large"
+                             required="true"
+                             requiredMessage="Campo nome: o valor é necessário."/>
+            </div>
+            <div class="form__row">
+                <h:outputLabel for="resumo" value="Resumo: "/>
+                <h:inputTextarea 
+                             id="resumo" 
+                             value="#{filmeControle.filme.resumo}"
+                             class="form__input input--width-medium"
+                             required="true"
+                             requiredMessage="Campo resumo: o valor é necessário."/>
+            </div>
+            <div class="form__row">
+                <h:outputLabel for="folder" value="URL do Folder: "/>
+                <h:inputText id="folder" 
+                                 value="#{filmeControle.filme.folderUrl}"
+                                 class="form__input input--width-medium"
+                                 required="true"
+                                 requiredMessage="Campo categoria: o valor é necessário."/>
+            </div>
+            <div class="form__row">
+                <h:outputLabel for="folder" value="URL do Folder Sessão: "/>
+                <h:inputText id="folder_sessao" 
+                             value="#{filmeControle.filme.folderUrlSessao}"
+                                 class="form__input input--width-medium"
+                                 required="true"
+                                 requiredMessage="Campo categoria: Url Folder Sessão é necessário."/>
+            </div>
+            <div class="form__row">
+                <h:outputLabel for="categoria" value="Categoria: "/>
+                <h:selectOneMenu id="categoria" 
+                                 value="#{filmeControle.filme.categoria}"
+                                 class="form__input input--width-medium"
+                                 required="true"
+                                 requiredMessage="Campo categoria: o valor é necessário.">
+                    <f:selectItem itemLabel="" noSelectionOption="true"/>
+                    <f:selectItems value="#{filmeControle.categorias}"
+                                   var="categoria"
+                                   itemLabel="#{categoria.nome}"
+                                   itemValue="#{categoria}"/>
+                </h:selectOneMenu>
+            </div>
+            <h:commandButton class="form__button" 
+                             value="Cadastrar"
+                             action="#{filmeControle.cadastrar()}"/>
+
+            <h:messages class="form__message"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

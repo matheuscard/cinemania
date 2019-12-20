@@ -1,0 +1,336 @@
+body {
+    background: #cccccc;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+  }
+  .header__username {
+    color: #fff;
+    font-family: Arial;
+    font-size: 20px;
+    align-self: center;
+}
+  .swiper-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 570px;
+
+  }
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 320px;
+    height: 400px;
+    background: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    margin-top: 30px;
+    
+  }
+  .botao-ver{
+      text-align: center;
+  }
+  .botao-ver input:hover{
+      cursor: pointer;
+      background: #999999;
+  }
+  .swiper-slide .caixa-imagem{
+      width: 100%;
+      overflow: hidden;
+  }
+  .swiper-slide .caixa-imagem img{
+      width: 320px;
+      height: 400px;
+
+  }
+  .swiper-wrapper .caixa-imagem_sessoes{
+      height: 38px;
+      width: 100%;
+      min-width: 300px;
+      max-width: 450px;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      position: absolute;
+      margin-top: 39px;
+  }
+  .swiper-wrapper .caixa-imagem_sessoes img{
+      width: 450px;
+  }
+  .botao-ver input{
+      background: #cccccc;
+      border-style: none;
+      border-radius: 3px;
+      padding: 1% 1% 1% 1%;
+      width: 100px;
+      height: 25px;
+      
+  }
+  .botao-comprar{
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 45%;
+    padding: 1% 1%;
+    
+  }
+  .btn-comprar-finalizar{
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 32%;
+    padding: 1% 1%;
+  }
+  .botao-comprar:hover{
+      background: gray;
+      cursor: pointer;
+  
+  }
+  .btn-comprar-finalizar:hover{
+      background: gray;
+      cursor: pointer;
+  
+  }
+  .quantidade{
+      margin-bottom: 50px;
+  }
+  /*Estilo Informações e Finalizar*/
+  .caixa-ingresso{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 430px;
+    background: whitesmoke;
+    border-radius: 5px;
+    text-align: center;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+    
+  }
+ .content{
+      display: inline-block;
+      min-width: 300px;
+      background: whitesmoke;
+      border-radius: 5px;
+     
+  }
+ .form__descricao{
+      min-width: 30%;
+      margin-bottom: 50px;
+
+  }
+  .header img{
+       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       border-radius: 5px;
+  }
+  #container-horarios{
+      margin-top: 95px;
+      height: 38px;
+      width: 100%;
+      min-width: 300px;
+      max-width: 450px;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      position: absolute;
+      
+      
+  }
+ #container-dias-sessoes{
+      margin-top: 95px;
+      height: 38px;
+      width: 100%;
+      min-width: 300px;
+      max-width: 450px;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      position: absolute;
+      margin-top: 245px;
+      background: #2f3640;
+      
+  }
+  .dias{
+      border: 1px solid cornflowerblue;
+      margin-top: 3px;
+      margin-left: 10px;
+      width: 20%;
+      height: 30px;
+      vertical-align: middle;
+      display: inline-block;
+      text-align: center;
+  }
+  .dias:hover{
+      cursor: pointer;
+      border: 2px solid #ff6600;
+  }
+  .sessoes{
+      height: 285px;
+      width: 100%;
+      min-width: 300px;
+      max-width: 450px;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      position: absolute;
+      margin-top: 407px;
+      background: #DCDCDC;
+  }
+  .horas_sessoes{
+      border: 1px solid cornflowerblue;
+      margin-top: 3px;
+      margin-left: 10px;
+      width: 20%;
+      height: 60px;
+      vertical-align: middle;
+      display: inline-block;
+      text-align: center;
+      border-radius: 5px;
+  }
+  .horas_sessoes:hover{
+      cursor: pointer;
+      border: 2px solid #ff6600;
+  }
+  .horario{
+      border: 1px solid cornflowerblue;
+      margin-top: 3px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      width: 20%;
+      height: 30px;
+      vertical-align: middle;
+      display: inline-block;
+      text-align: center;
+  }
+  .horario .horas{
+      position: absolute;
+      margin-top: 4px;
+      margin-left: -23px;
+      font-size: 18px;
+      color: cornflowerblue;
+  }
+    .horario:hover{
+      cursor: pointer;
+      border: 2px solid cornflowerblue;
+  }
+  #container-barra-inferior{
+      background: #2f3640;
+      height: 38px;
+      width: 100%;
+      min-width: 300px;
+      max-width: 450px;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      position: absolute;
+      
+  }
+    #container-barra-inferior_sessoes{
+      background: #2f3640;
+      height: 38px;
+      width: 100%;
+      min-width: 300px;
+      max-width: 450px;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      position: absolute;
+      
+  }
+    .opcao{
+      position: relative;
+      margin-top: 3px;
+      margin-left: 10px;
+      width: 20%;
+      height: 30px;
+      vertical-align: middle;
+      display: inline-block;
+      text-align: center;
+      background: #2f3640;
+      font-size: 25px;
+      text-align: center;
+  }
+  .opcao i{
+      margin-top: 3px;
+      color: #cccc;
+  }
+  .opcao i:hover{
+      color: #ff6600;
+  }
+  .localizacao i{
+      margin-top: 3px;
+      color: #cccc;
+  }
+  .localizacao i:hover{
+      color: #3399ff;
+  }
+  #container-barra-superior{
+      background: #2f3640;
+      height: 38px;
+      width: 100%;
+      min-width: 300px;
+      max-width: 450px;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      position: absolute;
+      margin-bottom: 10px;
+      
+  }
+    #container-barra-superior_sessoes{
+      background: #2f3640;
+      height: 38px;
+      width: 100%;
+      min-width: 300px;
+      max-width: 450px;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      position: absolute;
+      margin-bottom: 10px;
+      -webkit-box-shadow: inset -2px 50px 15px 9px rgba(22,22,22,0.62); 
+      box-shadow: inset -2px 50px 15px 9px rgba(22,22,22,0.65);
+      
+  }
+  .localizacao{
+      position: relative;
+      margin-top: 3px;
+      margin-left: 10px;
+      width: 20%;
+      height: 30px;
+      vertical-align: middle;
+      display: inline-block;
+      text-align: center;
+      background: #2f3640;
+      font-size: 25px;
+      text-align: center;
+  }
+  .titulo{
+      position: absolute;
+      margin-top: -403px;  
+      text-align: center;
+      color:#fff;
+      transform: translate( -50%);
+      left: 50%;
+      width: 320px;
+      border-style:none;
+-webkit-box-shadow: inset -2px 50px 15px 9px rgba(22,22,22,0.62); 
+box-shadow: inset -2px 50px 15px 9px rgba(22,22,22,0.65);
+  }
+  .titulo #titulo_filme{
+      font-size: 16px;
+      text-decoration: bold;
+      margin-top: 10px;  
+  }
+  .titulo #sub_titulo_filme{
+      margin-top: -14px;
+  }
+  .swiper-slide a{
+      text-decoration: none;
+  }
+/*  .form__/descricao p{
+      text-align:justify;
+      
+  }*/

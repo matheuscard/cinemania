@@ -1,0 +1,49 @@
+<ui:composition template="/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">Cadastrar Sessoes - Cinemania 1.0  </ui:define>
+    <ui:define name="main">
+        <h:form class="form">
+            <h2 class="form__title">Cadastro de Sessoes</h2>
+             <div class="form__row">
+                <h:outputLabel for="data" value="Data: "/>
+                <h:inputText id="hora"
+                             value="#{sessaoControle.sessao.data}" required="true" 
+                             requiredMessage=" *POR FAVOR, INFORME A DATA E O HORÁRIO DO FILME NA SESSÃO!" converter="localDateFacesConverter" >
+                              <f:passThroughAttribute name="placeholder" value="Dia/Mês/Ano" />
+                </h:inputText>
+            </div>                                                                  
+            <div class="form__row">     
+                <h:outputLabel for="hora" value="Horário: "/>
+                <h:inputText id="dataHora"
+                             value="#{sessaoControle.sessao.horario}" required="true" 
+                             requiredMessage=" *POR FAVOR, INFORME A DATA E O HORÁRIO DO FILME NA SESSÃO!" converter="localDateTimeFacesConverter" >
+                              <f:passThroughAttribute name="placeholder" value="Hrs:min" />
+                </h:inputText>
+            </div>
+
+            <div class="form__row">
+                <h:outputLabel for="categoria" value="Filme: "/>
+                <h:selectOneMenu id="sessao" 
+                                 value="#{sessaoControle.sessao.filme}"
+                                 class="form__input input--width-medium"
+                                 required="true"
+                                 requiredMessage="Campo categoria: o valor é necessário.">
+                    <f:selectItem itemLabel="" noSelectionOption="true"/>
+                    <f:selectItems value="#{filmeControle.filmes}"
+                                   var="filme"
+                                   itemLabel="#{filme.nome}"
+                                   itemValue="#{filme}"/>
+                </h:selectOneMenu>
+            </div>
+            <h:commandButton class="form__button" 
+                             value="Cadastrar"
+                             action="#{sessaoControle.cadastrar()}"/>
+
+            <h:messages class="form__message"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <meta charset='utf-8'/>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+        <title>Cinemanie 1.0</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+        <h:outputStylesheet library="css" name="swiper.min.css"/>
+        <h:outputStylesheet library="css" name="style.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"/>
+    </h:head>
+    <h:body>
+        <div id="swiper-container" class="swiper-container">
+            <div id="container-barra-superior_sessoes">
+                <h:form>
+                    <div class="localizacao">
+                        <h:commandLink action="/filmes/visualizar_adm.xhtml"><i class="fas fa-arrow-left"></i></h:commandLink>
+
+                    </div>
+                </h:form> 
+            </div>
+            <h:form class="swiper-wrapper">
+                <div class="swiper-wrapper_sessoes">
+                    <div class="caixa-imagem_sessoes">
+                        <h:graphicImage value="#{sessaoControle.sessao.filme.folderUrlSessao}"/>
+                    </div>
+                    <div class="titulo">
+                        <h5 id="titulo_filme">#{sessaoControle.sessao.filme.nome}</h5>
+                        <p id="sub_titulo_filme">#{sessaoControle.sessao.filme.categoria}</p>
+                    </div>
+
+                    <div id="container-dias-sessoes">
+
+
+                    </div>
+                    <div class="sessoes">
+                        <h4>Escolha uma sessao para assistir #{sessaoControle.sessao.filme.nome}</h4>
+                        <c:forEach items="#{sessaoControle.buscarSessaoPorFilme(sessaoControle.sessao.filme.id)}" var="sessoes">
+                            <h:commandLink action="#{compraControle.navegacaoIngressosDoFilme(loginControle.usuario,sessoes)}">
+                                <div class="horas_sessoes">
+                                    <h:outputLabel   rendered="#{sessoes.horario.minute == 0}" class="horas" value="#{sessoes.data.dayOfWeek}: #{sessoes.data} #{sessoes.horario.hour}:#{sessoes.horario.minute}0"/>
+                                    <h:outputLabel   rendered="#{sessoes.horario.minute != 0 and sessoes.horario.hour &gt; 9 }" class="horas" value="#{sessoes.data.dayOfWeek}: #{sessoes.data} #{sessoes.horario.hour}:#{sessoes.horario.minute}"/>
+                                    <h:outputLabel  rendered="#{sessoes.horario.minute != 0 and sessoes.horario.hour &lt; 10}" class="horas" value="#{sessoes.data.dayOfWeek}: #{sessoes.data} 0#{sessoes.horario.hour}0#{sessoes.horario.minute}"/>
+                                </div>
+                            </h:commandLink>
+                        </c:forEach>
+                    </div>
+                </div>
+            </h:form>
+            <div id="container-barra-inferior_sessoes">
+                <h:form>
+                    <div id="container-opcoes">
+                        <div class="opcao">
+                            <h:commandLink><i class="far fa-star"></i></h:commandLink>
+
+                        </div>
+                        <div class="opcao">
+                            <h:commandLink><i class="far fa-user"></i></h:commandLink>
+                        </div>
+                        <div class="opcao">
+                            <h:commandLink action="#{loginControle.adicionarFilme()}"><i class="fas fa-plus-circle"></i></h:commandLink>
+                        </div>
+                    </div>
+                </h:form> 
+            </div>
+            <!--  <div class="swiper-pagination"></div>-->
+        </div>
+        <script type="text/javascript" src="../resources/js/swiper.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.js"></script>
+    </h:body>
+</html>
+
+
+

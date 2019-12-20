@@ -1,0 +1,50 @@
+<ui:composition template="/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="title">Cinemania - Sessoes</ui:define>
+    <ui:define name="main">
+        <h:form class="form">
+            <h2 class="form__title">Sessoes Cadastradas</h2>
+
+            <h:commandLink class="form__button__add"
+                           action="cadastrar"
+                           value="+"/>
+            
+            <h:dataTable value="#{sessaoControle.sessoes}"
+                         var="sessao"
+                         styleClass="table"
+                         headerClass="table__header"
+                         rowClasses="table--line-odd, table--line-even">
+
+                <h:column>
+                    <f:facet name="header">Número</f:facet>
+                        #{sessao.numero}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Data</f:facet>
+                        #{sessao.data}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Hora</f:facet>
+                        #{sessao.horario.hour} : ${sessao.horario.minute}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Filme</f:facet>
+                        #{sessao.filme.nome}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"></f:facet>
+                    <h:commandButton action="#{sessaoControle.deletar(sessao.numero)}" 
+                                     class="delete_icon"/>
+                </h:column>
+            </h:dataTable>
+            <h:messages class="form__message" style="margin-left: 10%;"/>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+
